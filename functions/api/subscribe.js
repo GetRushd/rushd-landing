@@ -1,40 +1,43 @@
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export const handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
-  }
+export async function onRequestPost(context) {
+  const { request, env } = context;
 
   let email;
   try {
-    ({ email } = JSON.parse(event.body));
+    ({ email } = await request.json());
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
+    return Response.json({ error: 'Invalid request body' }, { status: 400 });
   }
 
   // Validate email at the boundary
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Invalid email address' }) };
+    return Response.json({ error: 'Invalid email address' }, { status: 400 });
   }
 
   try {
-    // Add to Resend Audience (requires RESEND_AUDIENCE_ID env var in Netlify dashboard)
-    if (process.env.RESEND_AUDIENCE_ID) {
-      await resend.contacts.create({
-        email,
-        unsubscribed: false,
-        audienceId: process.env.RESEND_AUDIENCE_ID,
+    // Add to Resend Audience
+    if (env.RESEND_AUDIENCE_ID) {
+      await fetch(`https://api.resend.com/audiences/${env.RESEND_AUDIENCE_ID}/contacts`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${env.RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, unsubscribed: false }),
       });
     }
 
-    // Send branded confirmation email to the subscriber
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: email,
-      subject: "You're on the Inabah waitlist",
-      html: `<!DOCTYPE html>
+    // Send branded confirmation email
+    const emailRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'onboarding@resend.dev', // TODO: switch to hello@getrushd.app once domain is verified
+        to: email,
+        subject: "You're on the Rushd waitlist",
+        html: `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -49,8 +52,8 @@ export const handler = async (event) => {
           <!-- Logo -->
           <tr>
             <td style="padding-bottom:40px;">
-              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Inabah</span>
-              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">إنابة</span>
+              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Rushd</span>
+              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">رشد</span>
             </td>
           </tr>
 
@@ -63,7 +66,7 @@ export const handler = async (event) => {
                 <span style="color:#C9E8BF;font-style:italic;font-weight:300;">Always.</span>
               </h1>
               <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.5);">
-                Thank you for joining the Inabah waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
+                Thank you for joining the Rushd waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
               </p>
             </td>
           </tr>
@@ -93,7 +96,7 @@ export const handler = async (event) => {
           <tr>
             <td style="padding-top:32px;text-align:center;">
               <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#061B0E;opacity:0.25;">
-                © 2026 Inabah · joinInabah.app
+                © 2026 Rushd · getrushd.app
               </p>
             </td>
           </tr>
@@ -104,19 +107,29 @@ export const handler = async (event) => {
   </table>
 </body>
 </html>`,
+      }),
     });
 
-    return {
-      statusCode: 200,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ success: true }),
-    };
+    if (!emailRes.ok) {
+      const err = await emailRes.json();
+      console.error('Resend error:', err);
+      return Response.json({ error: 'Failed to subscribe. Please try again.' }, { status: 500 });
+    }
+
+    return Response.json({ success: true });
   } catch (err) {
-    console.error('Resend error:', err);
-    return {
-      statusCode: 500,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ error: 'Failed to subscribe. Please try again.' }),
-    };
+    console.error('Worker error:', err);
+    return Response.json({ error: 'Failed to subscribe. Please try again.' }, { status: 500 });
   }
-};
+}
+
+// Handle CORS preflight
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}

@@ -1,0 +1,7 @@
+name = "rushd-landing"
+compatibility_date = "2026-03-26"
+pages_build_output_dir = "dist"
+
+# Local dev: wrangler pages dev dist --compatibility-date=2026-03-26
+# Secrets: wrangler pages secret put RESEND_API_KEY
+#          wrangler pages secret put RESEND_AUDIENCE_ID
