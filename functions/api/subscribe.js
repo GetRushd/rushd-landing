@@ -34,7 +34,7 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev', // TODO: switch to hello@getinabah.app once domain is verified
+        from: 'Inabah <hello@getinabah.app>',
         to: email,
         subject: "You're on the Inabah waitlist",
         html: `<!DOCTYPE html>
