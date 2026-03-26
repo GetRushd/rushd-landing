@@ -31,7 +31,7 @@ export const handler = async (event) => {
 
     // Send branded confirmation email to the subscriber
     await resend.emails.send({
-      from: 'Rushd <hello@joinrushd.app>',
+      from: 'onboarding@resend.dev',
       to: email,
       subject: "You're on the Rushd waitlist",
       html: `<!DOCTYPE html>
