@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 /**
- * RUSHD - THE SACRED SANCTUARY
+ * Inabah - THE SACRED SANCTUARY
  * Strict implementation of DESIGN.md & screen.png
  * Updated: Manrope Font, Simplified Navigation, Arabic Branding (No Tashkeel)
  */
@@ -89,8 +89,8 @@ const App = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 px-6 py-5 transition-all duration-500 ${scrolled ? 'bg-white/40 backdrop-blur-xl shadow-sm py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
-             <span className="font-extrabold text-2xl tracking-tighter">Rushd</span>
-             <span className="text-xl font-light opacity-30 mt-1" dir="rtl">رشد</span>
+             <span className="font-extrabold text-2xl tracking-tighter">Inabah</span>
+             <span className="text-xl font-light opacity-30 mt-1" dir="rtl">إنابة</span>
           </div>
           
           <div className="flex items-center gap-4">
@@ -117,7 +117,7 @@ const App = () => {
                 <span className="text-[#23674A] italic font-light">first.</span>
               </h1>
               <p className="text-lg md:text-xl text-[#23674A] max-w-md leading-relaxed font-medium">
-                Rushd helps you shape your day around Salah, transforming your digital schedule into a sacred sanctuary of focus and flow.
+                Inabah helps you shape your day around Salah, transforming your digital schedule into a sacred sanctuary of focus and flow.
               </p>
             </div>
 
@@ -159,7 +159,7 @@ const App = () => {
             <div className="relative z-20 w-72 md:w-80 aspect-[1/2] bg-[#061B0E] rounded-[3.5rem] shadow-[0_60px_120px_-20px_rgba(6,27,14,0.3)] border-[8px] border-[#1B3022] overflow-hidden transform lg:translate-x-12 -rotate-2 p-3">
                 <img
                   src="/screenshot-1.png"
-                  alt="Rushd app — prayer schedule view"
+                  alt="Inabah app — prayer schedule view"
                   className="w-full h-full object-contain object-top rounded-[2.5rem]"
                 />
             </div>
@@ -168,7 +168,7 @@ const App = () => {
             <div className="absolute z-10 w-64 md:w-72 aspect-[1/2] bg-white rounded-[3.5rem] shadow-[0_40px_80px_rgba(6,27,14,0.1)] border-[8px] border-white overflow-hidden transform -translate-x-36 translate-y-12 rotate-3 p-3">
                <img
                  src="/screenshot-2.png"
-                 alt="Rushd app — calendar integration view"
+                 alt="Inabah app — calendar integration view"
                  className="w-full h-full object-contain object-top rounded-[2.5rem]"
                />
             </div>
@@ -231,7 +231,7 @@ const App = () => {
             Five prayers.<br />Five pivots.
           </h2>
           <p className="text-xl text-[#23674A] leading-relaxed max-w-2xl mx-auto font-medium">
-            Rushd is built on a simple premise: the five daily prayers should be treated like the true anchors of our existence. Instead of squeezing prayer into your day, we help you build your day around your prayers.
+            Inabah is built on a simple premise: the five daily prayers should be treated like the true anchors of our existence. Instead of squeezing prayer into your day, we help you build your day around your prayers.
           </p>
         </motion.div>
 
@@ -306,7 +306,7 @@ const App = () => {
               <div className="w-64 aspect-[9/19.5] bg-[#061B0E] rounded-[3rem] shadow-2xl overflow-hidden p-3">
                  <img
                    src="/screenshot-3.png"
-                   alt="Rushd app — prayer time view"
+                   alt="Inabah app — prayer time view"
                    className="w-full h-full object-cover rounded-[2rem]"
                  />
               </div>
@@ -316,7 +316,7 @@ const App = () => {
               <div className="w-64 aspect-[9/19.5] bg-[#F0F5EB] rounded-[3rem] shadow-xl border border-white overflow-hidden p-3">
                  <img
                    src="/screenshot-2.png"
-                   alt="Rushd app — calendar view"
+                   alt="Inabah app — calendar view"
                    className="w-full h-full object-cover rounded-[2rem]"
                  />
               </div>
@@ -336,11 +336,11 @@ const App = () => {
         >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">Technology is a vessel.<br />What we fill it with matters.</h2>
           <blockquote className="text-2xl text-[#23674A] font-light italic leading-relaxed opacity-80">
-            "The same tools that distract can also serve good. Rushd is an attempt to reclaim the digital landscape for the soul, making the path to presence easier, not harder."
+            "The same tools that distract can also serve good. Inabah is an attempt to reclaim the digital landscape for the soul, making the path to presence easier, not harder."
           </blockquote>
           <div className="pt-4 flex flex-col items-center gap-2">
             <div className="w-12 h-[1px] bg-[#061B0E]/20"></div>
-            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-30">The Rushd Ethos</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.4em] opacity-30">The Inabah Ethos</span>
           </div>
         </motion.div>
       </section>
@@ -356,7 +356,7 @@ const App = () => {
           <div className="relative z-10 space-y-12">
             <div className="space-y-6">
               <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.9]">Busy life is real.<br />Prayer is still first.</h2>
-              <p className="text-white/50 text-lg md:text-xl font-medium max-w-xl mx-auto">Rushd is for people who want to live in the modern world without letting it decide what comes first.</p>
+              <p className="text-white/50 text-lg md:text-xl font-medium max-w-xl mx-auto">Inabah is for people who want to live in the modern world without letting it decide what comes first.</p>
             </div>
             
             {submitted ? (
@@ -393,11 +393,11 @@ const App = () => {
         <div className="w-full h-[1px] bg-[#061B0E]/10 mb-12" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
-            <span className="font-extrabold text-lg tracking-tighter">Rushd</span>
-            <span className="text-base font-light opacity-30" dir="rtl">رشد</span>
+            <span className="font-extrabold text-lg tracking-tighter">Inabah</span>
+            <span className="text-base font-light opacity-30" dir="rtl">إنابة</span>
           </div>
           <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-25">
-            © 2026 Rushd · getrushd.app
+            © 2026 Inabah · getInabah.app
           </p>
           <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.2em] opacity-40">
             <a href="#" className="hover:opacity-100 transition-opacity">X</a>
@@ -452,7 +452,7 @@ const ConflictCard = () => (
             <span>Team sync rescheduled → 4:45 PM</span>
           </div>
         </div>
-        <p className="text-[10px] opacity-40 leading-relaxed">Rushd detected your 3:45 PM meeting overlaps with Asr and suggested a slot right after. Your team has been notified.</p>
+        <p className="text-[10px] opacity-40 leading-relaxed">Inabah detected your 3:45 PM meeting overlaps with Asr and suggested a slot right after. Your team has been notified.</p>
       </div>
     </div>
   </motion.div>

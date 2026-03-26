@@ -33,7 +33,7 @@ export const handler = async (event) => {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: email,
-      subject: "You're on the Rushd waitlist",
+      subject: "You're on the Inabah waitlist",
       html: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +49,8 @@ export const handler = async (event) => {
           <!-- Logo -->
           <tr>
             <td style="padding-bottom:40px;">
-              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Rushd</span>
-              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">رشد</span>
+              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Inabah</span>
+              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">إنابة</span>
             </td>
           </tr>
 
@@ -63,7 +63,7 @@ export const handler = async (event) => {
                 <span style="color:#C9E8BF;font-style:italic;font-weight:300;">Always.</span>
               </h1>
               <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.5);">
-                Thank you for joining the Rushd waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
+                Thank you for joining the Inabah waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
               </p>
             </td>
           </tr>
@@ -93,7 +93,7 @@ export const handler = async (event) => {
           <tr>
             <td style="padding-top:32px;text-align:center;">
               <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#061B0E;opacity:0.25;">
-                © 2026 Rushd · joinrushd.app
+                © 2026 Inabah · joinInabah.app
               </p>
             </td>
           </tr>
