@@ -94,7 +94,7 @@ const App = () => {
           </div>
           
           <div className="flex items-center gap-4">
-            <button className="bg-[#061B0E] text-white px-8 py-3 rounded-full text-[11px] font-bold shadow-lg hover:scale-105 transition-transform active:scale-95 uppercase tracking-widest">
+            <button onClick={() => document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' })} className="bg-[#061B0E] text-white px-8 py-3 rounded-full text-[11px] font-bold shadow-lg hover:scale-105 transition-transform active:scale-95 uppercase tracking-widest">
               Join Waitlist
             </button>
           </div>
@@ -346,7 +346,7 @@ const App = () => {
       </section>
 
       {/* 8. FINAL CTA */}
-      <section className="px-6 pb-20 md:pb-32">
+      <section id="waitlist" className="px-6 pb-20 md:pb-32">
         <motion.div 
            whileHover={{ scale: 1.01 }}
            className="max-w-6xl mx-auto bg-[#061B0E] rounded-[3.5rem] p-16 md:p-24 text-center text-white relative overflow-hidden shadow-[0_60px_100px_-20px_rgba(6,27,14,0.4)]"
