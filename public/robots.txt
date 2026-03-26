@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://joinInabah.app/sitemap.xml
+Sitemap: https://getinabah.app/sitemap.xml

@@ -34,9 +34,9 @@ export async function onRequestPost(context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'onboarding@resend.dev', // TODO: switch to hello@getrushd.app once domain is verified
+        from: 'onboarding@resend.dev', // TODO: switch to hello@getinabah.app once domain is verified
         to: email,
-        subject: "You're on the Rushd waitlist",
+        subject: "You're on the Inabah waitlist",
         html: `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,8 +52,8 @@ export async function onRequestPost(context) {
           <!-- Logo -->
           <tr>
             <td style="padding-bottom:40px;">
-              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Rushd</span>
-              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">رشد</span>
+              <span style="font-size:22px;font-weight:800;color:#061B0E;letter-spacing:-0.04em;">Inabah</span>
+              <span style="font-size:18px;font-weight:300;color:#061B0E;opacity:0.3;margin-left:8px;">إنابة</span>
             </td>
           </tr>
 
@@ -66,7 +66,7 @@ export async function onRequestPost(context) {
                 <span style="color:#C9E8BF;font-style:italic;font-weight:300;">Always.</span>
               </h1>
               <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.5);">
-                Thank you for joining the Rushd waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
+                Thank you for joining the Inabah waitlist. We're building something intentional — a tool that helps you anchor your day in Salah, not squeeze it in. We'll reach out before launch with early access.
               </p>
             </td>
           </tr>
@@ -96,7 +96,7 @@ export async function onRequestPost(context) {
           <tr>
             <td style="padding-top:32px;text-align:center;">
               <p style="margin:0;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#061B0E;opacity:0.25;">
-                © 2026 Rushd · getrushd.app
+                © 2026 Inabah · getinabah.app
               </p>
             </td>
           </tr>
