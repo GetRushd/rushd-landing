@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 
 /**
- * Inabah - THE SACRED SANCTUARY
+ * Inabah
  * Strict implementation of DESIGN.md & screen.png
  * Updated: Manrope Font, Simplified Navigation, Arabic Branding (No Tashkeel)
  */
