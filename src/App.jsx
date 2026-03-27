@@ -89,6 +89,7 @@ const App = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 px-6 py-5 transition-all duration-500 ${scrolled ? 'bg-white/40 backdrop-blur-xl shadow-sm py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
+             <img src="/logo.png" alt="Inabah" className="w-9 h-9 rounded-xl" />
              <span className="font-extrabold text-2xl tracking-tighter">Inabah</span>
              <span className="text-xl font-light opacity-30 mt-1" dir="rtl">إنابة</span>
           </div>
@@ -113,11 +114,11 @@ const App = () => {
           >
             <div className="space-y-4 text-left">
               <h1 className="text-7xl md:text-[100px] font-extrabold leading-[0.85] tracking-[-0.04em]">
-                Put prayer<br />
-                <span className="text-[#23674A] italic font-light">first.</span>
+                Return to<br />
+                <span className="text-[#23674A] italic font-light">what matters.</span>
               </h1>
               <p className="text-lg md:text-xl text-[#23674A] max-w-md leading-relaxed font-medium">
-                Inabah helps you shape your day around Salah, transforming your digital schedule into a sacred sanctuary of focus and flow.
+                Inabah is a prayer-centered planning app that helps you align your day with salah, so what is most important does not get pushed aside by everything else.
               </p>
             </div>
 
@@ -143,6 +144,19 @@ const App = () => {
             )}
             {formError && <p className="text-red-500 text-xs font-medium max-w-md">{formError}</p>}
             
+            <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-30">Be the first to know when Inabah launches.</p>
+
+            <div className="flex flex-wrap gap-3">
+              <div className="flex items-center gap-2 bg-[#F0F5EB] rounded-full px-4 py-2 text-[11px] font-semibold text-[#23674A]">
+                <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Syncs with Google Calendar
+              </div>
+              <div className="flex items-center gap-2 bg-[#F0F5EB] rounded-full px-4 py-2 text-[11px] font-semibold text-[#23674A]">
+                <svg className="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                No account needed · No data collected
+              </div>
+            </div>
+
             <div className="flex items-center gap-4 opacity-40 text-[10px] font-black uppercase tracking-[0.2em]">
               <div className="w-8 h-[1px] bg-[#061B0E]"></div>
               <span>Coming soon to iOS and Android</span>
@@ -187,8 +201,8 @@ const App = () => {
             className="md:w-1/2 space-y-4"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
-              Modern life is busy.<br />
-              <span className="opacity-40 font-light">Losing direction is the real problem.</span>
+              Modern life keeps pulling.<br />
+              <span className="opacity-40 font-light">Inabah helps you return.</span>
             </h2>
           </motion.div>
           <motion.div 
@@ -199,18 +213,11 @@ const App = () => {
             className="md:w-1/3 space-y-8"
           >
             <p className="text-[#23674A] font-medium leading-relaxed">
-              Our days are full of meetings, errands, and notifications. Without intentional structure, our spiritual connection becomes a footnote. We aren't just busy; we're drifting from our center.
+              Our days are full of deadlines, meetings, errands, travel, and constant notifications. Even when prayer matters deeply, it can still get pushed to the edges.
             </p>
-            <div className="grid grid-cols-2 gap-8 pt-4">
-               <div className="space-y-1">
-                  <span className="text-3xl font-bold">84%</span>
-                  <p className="text-[10px] uppercase font-black opacity-40 tracking-widest">Feel digitally overwhelmed</p>
-               </div>
-               <div className="space-y-1">
-                  <span className="text-3xl font-bold">5x</span>
-                  <p className="text-[10px] uppercase font-black opacity-40 tracking-widest">Daily moments of peace needed</p>
-               </div>
-            </div>
+            <p className="text-[#23674A] font-medium leading-relaxed opacity-70">
+              But salah was never meant to live at the margins. Technology can distract us, or it can help us return. Inabah is built for that return.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -218,7 +225,7 @@ const App = () => {
       {/* 4. PHILOSOPHY SECTION */}
       <section id="philosophy" className="py-16 md:py-28 px-6 text-center space-y-8 md:space-y-12">
         <div className="inline-block bg-[#C9E8BF] text-[#23674A] px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
-          The Anchoring Principle
+          The Core Concept
         </div>
         <motion.div
            initial="hidden"
@@ -228,60 +235,60 @@ const App = () => {
            className="space-y-8"
         >
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-            Five prayers.<br />Five pivots.
+            Five prayers.<br />Five returns.
           </h2>
           <p className="text-xl text-[#23674A] leading-relaxed max-w-2xl mx-auto font-medium">
-            Inabah is built on a simple premise: the five daily prayers should be treated like the true anchors of our existence. Instead of squeezing prayer into your day, we help you build your day around your prayers.
+            Each prayer is more than a scheduled moment. It is a return. Inabah is built around this idea: that the day is not truly ordered until it returns, again and again, to what matters most.
           </p>
         </motion.div>
 
         <div className="max-w-2xl mx-auto space-y-4 pt-8 md:pt-12">
-           <StepCard number="01" title="Fajr Awakening" desc="Setting intention before the world wakes." />
-           <StepCard number="02" title="Dhuhr Pivot" desc="A mid-day pause in the height of action." className="md:translate-x-8" />
+           <StepCard number="01" title="A return from distraction" desc="Fajr sets the tone before the world pulls you in." />
+           <StepCard number="02" title="A return from busyness" desc="Dhuhr — a pause in the height of the day's demands." className="md:translate-x-8" />
            <ConflictCard />
-           <StepCard number="03" title="Asr Checkpoint" desc="Protected — no meetings allowed in this window." className="md:translate-x-4" />
-           <StepCard number="04" title="Maghrib Reset" desc="The day winds down. Your inbox can wait." className="md:translate-x-12" />
-           <StepCard number="05" title="Isha Closure" desc="A moment of reflection before rest." className="md:translate-x-6" />
+           <StepCard number="03" title="A return from forgetfulness" desc="Asr — protected time, a check to drift no further." className="md:translate-x-4" />
+           <StepCard number="04" title="A return to presence" desc="Maghrib — the day winds down, the heart comes back." className="md:translate-x-12" />
+           <StepCard number="05" title="A return to Allah" desc="Isha — the day ends where it should have centered all along." className="md:translate-x-6" />
         </div>
       </section>
 
       {/* 5. FEATURES */}
       <section id="features" className="py-16 md:py-28 px-6 max-w-7xl mx-auto">
         <div className="mb-10 md:mb-16 space-y-4">
-          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tighter">Built for real life.</h2>
-          <p className="text-[#23674A] font-medium opacity-50 uppercase text-[11px] tracking-widest">Sophisticated tools for a balanced spiritual life.</p>
+          <h2 className="text-5xl md:text-6xl font-extrabold tracking-tighter">Built for real life.<br /><span className="opacity-40 font-light">Rooted in what is higher.</span></h2>
+          <p className="text-[#23674A] font-medium opacity-50 uppercase text-[11px] tracking-widest">Prayer-aware planning for busy lives that still want to return.</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <FeatureCard 
             icon={<Calendar className="w-5 h-5" />} 
             title="Plan with prayer in mind" 
-            description="Sync your Google or Outlook calendar and see your tasks mapped alongside prayer windows."
+            description="See your day in the context of prayer times so your schedule works with salah instead of competing with it."
           />
           <FeatureCard 
             icon={<Bell className="w-5 h-5" />} 
-            title="Get reminders that actually matter" 
-            description="No aggressive alarms. Just gentle nudges that prepare you for the coming connection."
+            title="Gentle reminders, not noise" 
+            description="Notifications that help you return at the right time — supportive and calm, never intrusive."
           />
           <FeatureCard 
             icon={<MapPin className="w-5 h-5" />} 
             title="Find places to pray nearby" 
-            description="Integrated map feature to locate masjids and prayer spaces whenever your journey takes you."
+            description="When you are out, traveling, or between commitments, quickly find nearby prayer spaces without losing your rhythm."
           />
           <FeatureCard 
             icon={<RefreshCw className="w-5 h-5" />} 
-            title="Keep your calendar connected" 
-            description="Automatic time blocking ensures you're never booked during the most important appointments of the day."
+            title="Syncs with Google Calendar" 
+            description="Connect your Google Calendar and see all your commitments alongside prayer times. No account required — just sync if you want, and unsync whenever you like."
           />
           <FeatureCard 
             icon={<Leaf className="w-5 h-5" />} 
-            title="Stay grounded in calm UI" 
-            description="A distraction-free environment designed to lower your heart rate and lift your focus."
+            title="Calm by design" 
+            description="Simple, clean, and intentionally quiet — giving you what you need without adding more clutter."
           />
           <FeatureCard 
             icon={<BarChart3 className="w-5 h-5" />} 
-            title="Sacred Analytics" 
-            description="Track your consistency and find patterns in your spiritual rhythm without the 'gamification' pressure."
+            title="Track your rhythm" 
+            description="Follow your consistency over time and find patterns in your spiritual practice — no pressure, no gamification."
           />
         </div>
       </section>
@@ -335,8 +342,11 @@ const App = () => {
            className="space-y-8"
         >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">Technology is a vessel.<br />What we fill it with matters.</h2>
-          <blockquote className="text-2xl text-[#23674A] font-light italic leading-relaxed opacity-80">
-            "The same tools that distract can also serve good. Inabah is an attempt to reclaim the digital landscape for the soul, making the path to presence easier, not harder."
+          <p className="text-xl text-[#23674A] font-medium leading-relaxed max-w-2xl mx-auto opacity-80">
+            The same tools that fragment attention can also be used to restore it.
+          </p>
+          <blockquote className="text-2xl text-[#23674A] font-light italic leading-relaxed opacity-80 max-w-2xl mx-auto">
+            "Inabah exists to use technology in service of remembrance, order, and devotion — helping you return your time, your attention, and your day to Allah."
           </blockquote>
           <div className="pt-4 flex flex-col items-center gap-2">
             <div className="w-12 h-[1px] bg-[#061B0E]/20"></div>
@@ -355,8 +365,8 @@ const App = () => {
           
           <div className="relative z-10 space-y-12">
             <div className="space-y-6">
-              <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.9]">Busy life is real.<br />Prayer is still first.</h2>
-              <p className="text-white/50 text-lg md:text-xl font-medium max-w-xl mx-auto">Inabah is for people who want to live in the modern world without letting it decide what comes first.</p>
+              <h2 className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-[0.9]">Busy life is real.<br />Returning is still possible.</h2>
+              <p className="text-white/50 text-lg md:text-xl font-medium max-w-xl mx-auto">Inabah is for those who want to live fully in the modern world without letting it decide what comes first.</p>
             </div>
             
             {submitted ? (
@@ -383,7 +393,7 @@ const App = () => {
               </>
             )}
             
-            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.25em]">Join 2,500+ others on the early access list.</p>
+            <p className="text-white/20 text-[10px] font-bold uppercase tracking-[0.25em]">Early updates, launch news, and first access.</p>
           </div>
         </motion.div>
       </section>
@@ -393,6 +403,7 @@ const App = () => {
         <div className="w-full h-[1px] bg-[#061B0E]/10 mb-12" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
+            <img src="/logo.png" alt="Inabah" className="w-8 h-8 rounded-xl" />
             <span className="font-extrabold text-lg tracking-tighter">Inabah</span>
             <span className="text-base font-light opacity-30" dir="rtl">إنابة</span>
           </div>
