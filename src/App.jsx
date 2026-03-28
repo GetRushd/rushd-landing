@@ -293,7 +293,10 @@ const App = () => {
         </div>
       </section>
 
-      {/* 6. A CLEARER RHYTHM */}
+      {/* 6. WEB APP SECTION */}
+      <WebAppSection />
+
+      {/* 7. A CLEARER RHYTHM */}
       <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto text-center space-y-12 md:space-y-20">
         <h2 className="text-5xl md:text-6xl font-extrabold tracking-tighter">A clearer rhythm for the day.</h2>
         
@@ -419,6 +422,193 @@ const App = () => {
     </div>
   );
 };
+
+// Web App Section
+const webViews = [
+  {
+    id: 'today',
+    label: "Today's Focus",
+    screenshot: '/desktop-1.png',
+    alt: 'Inabah web — Today\'s Focus with prayer anchors',
+    headline: 'Your day, anchored by prayer.',
+    body: 'Tasks live under the prayer they belong to. Anchors keep your work from drifting past what matters most, and the Timeline on the right shows exactly how the day will unfold.',
+    pill: null,
+  },
+  {
+    id: 'prayer',
+    label: 'Prayer Times',
+    screenshot: '/desktop-2.png',
+    alt: 'Inabah web — Prayer Times countdown',
+    headline: 'Always know what\'s next.',
+    body: 'A calm, full-screen countdown to the current prayer window, your schedule beneath it, a Sunnah tip to the side, and a 12-day streak to keep the habit alive. Nothing cluttered.',
+    pill: null,
+  },
+  {
+    id: 'week',
+    label: 'Weekly View',
+    screenshot: '/desktop-3.png',
+    alt: 'Inabah web — Weekly calendar with prayer blocks',
+    headline: 'See the whole week at once.',
+    body: 'Prayers are timed entries in the grid — not a separate layer. Conflicts surface in red directly on the day so you can see at a glance which weeks need attention.',
+    pill: '2 CONFLICT DETECTED',
+  },
+  {
+    id: 'day',
+    label: 'Day Detail',
+    screenshot: '/desktop-4.png',
+    alt: 'Inabah web — Day detail with conflict resolution',
+    headline: 'Resolve, reschedule, move on.',
+    body: 'Tap any day and see every prayer and task in order. Conflicts are flagged with a one-tap "Reschedule after Dhuhr" suggestion so the fix is always just one click away.',
+    pill: 'CONFLICT FLAGGED',
+  },
+];
+
+const WebAppSection = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const timerRef = React.useRef(null);
+
+  const startTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setActiveIndex(i => (i + 1) % webViews.length);
+    }, 8000);
+  };
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const handleTabClick = (index) => {
+    setActiveIndex(index);
+    startTimer();
+  };
+
+  const active = webViews[activeIndex].id;
+  const current = webViews[activeIndex];
+
+  return (
+    <section className="py-16 md:py-28 px-6 max-w-7xl mx-auto space-y-12 md:space-y-16">
+      {/* Label + Heading */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}
+        className="space-y-6 text-center"
+      >
+        <div className="inline-flex items-center gap-2 bg-[#C9E8BF] text-[#23674A] px-5 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#23674A] animate-pulse" />
+          Now on the web
+        </div>
+        <h2 className="text-5xl md:text-6xl font-extrabold tracking-tighter leading-[0.9]">
+          Your full planning experience,<br />
+          <span className="opacity-40 font-light italic">on any screen.</span>
+        </h2>
+        <p className="text-[#23674A] font-medium leading-relaxed max-w-xl mx-auto opacity-70">
+          The same prayer-aware intelligence from the mobile app — now in a browser-native workspace built for focused work.
+        </p>
+      </motion.div>
+
+      {/* Tab switcher */}
+      <div className="flex justify-center">
+        <div className="flex gap-1.5 bg-[#F0F5EB] p-1.5 rounded-full flex-wrap justify-center">
+          {webViews.map((v, i) => (
+            <button
+              key={v.id}
+              onClick={() => handleTabClick(i)}
+              className={`relative px-5 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-widest transition-all duration-300 overflow-hidden ${
+                activeIndex === i
+                  ? 'bg-[#061B0E] text-white shadow-md'
+                  : 'text-[#061B0E]/50 hover:text-[#061B0E]'
+              }`}
+            >
+              {activeIndex === i && (
+                <span
+                  key={activeIndex}
+                  className="absolute bottom-0 left-0 h-0.5 bg-white/30 rounded-full"
+                  style={{ animation: 'tabProgress 8s linear forwards' }}
+                />
+              )}
+              {v.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <style dangerouslySetInnerHTML={{ __html: `@keyframes tabProgress { from { width: 0% } to { width: 100% } }` }} />
+
+      {/* Browser mockup */}
+      <motion.div
+        key={active}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="relative"
+      >
+        {/* Browser chrome */}
+        <div className="rounded-[2rem] overflow-hidden shadow-[0_60px_120px_-20px_rgba(6,27,14,0.18)] border border-[rgba(195,200,193,0.3)]">
+          {/* Top bar */}
+          <div className="bg-[#F0F5EB] px-5 py-3.5 flex items-center gap-3 border-b border-[rgba(6,27,14,0.06)]">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-[#061B0E]/10" />
+              <div className="w-3 h-3 rounded-full bg-[#061B0E]/10" />
+              <div className="w-3 h-3 rounded-full bg-[#061B0E]/10" />
+            </div>
+            <div className="flex-1 bg-white/70 rounded-full px-4 py-1.5 text-[11px] font-semibold text-[#061B0E]/30 max-w-xs mx-auto text-center select-none">
+              app.getinabah.app
+            </div>
+            {current.pill && (
+              <span className={`text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${
+                current.pill.includes('CONFLICT')
+                  ? 'bg-red-100 text-red-500'
+                  : 'bg-orange-100 text-orange-500'
+              }`}>
+                {current.pill}
+              </span>
+            )}
+          </div>
+          {/* Screenshot */}
+          <div className="bg-[#F6FBF1] w-full">
+            <img
+              src={current.screenshot}
+              alt={current.alt}
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* Subtle glow behind the mockup */}
+        <div className="absolute -inset-8 -z-10 bg-[#C9E8BF]/20 blur-[80px] rounded-[4rem]" />
+      </motion.div>
+
+      {/* Descriptor + 3 callout chips */}
+      <motion.div
+        key={active + '-desc'}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="grid md:grid-cols-[1fr_auto] gap-8 items-start max-w-5xl mx-auto"
+      >
+        <div className="space-y-3">
+          <h3 className="text-2xl font-extrabold tracking-tight">{current.headline}</h3>
+          <p className="text-[#23674A] font-medium leading-relaxed opacity-70 max-w-lg">{current.body}</p>
+        </div>
+        <div className="flex flex-wrap gap-2 md:justify-end">
+          <Chip>Prayer-first scheduling</Chip>
+          <Chip>Conflict detection</Chip>
+          <Chip>Works in any browser</Chip>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+const Chip = ({ children }) => (
+  <span className="bg-[#F0F5EB] border border-[rgba(195,200,193,0.4)] text-[#23674A] px-4 py-2 rounded-full text-[11px] font-bold whitespace-nowrap">
+    {children}
+  </span>
+);
 
 // Internal Components
 const FeatureCard = ({ icon, title, description }) => (
